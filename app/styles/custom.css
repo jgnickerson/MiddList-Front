@@ -1,0 +1,37 @@
+.panel {
+	margin-bottom: 1px;
+}
+
+.container {
+	padding-bottom: 40px;
+}
+
+.btn-group {
+	padding-bottom: 10px;
+}
+
+.btn-lg {
+  padding: 7px 16px;
+  margin-bottom:0;
+  font-size: 30px;
+  line-height: 1.333;
+  border-radius: 7px;
+}
+
+.dropdown-menu {
+	margin-top: 0;
+	font-size: 20px;
+}
+
+.form-bottom-button {
+	margin-top: 15px;
+}
+
+.error-list {
+	color: red;
+	margin-bottom: 0px;
+}
+
+#post-list {
+	margin-bottom: 10px;
+}

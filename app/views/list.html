@@ -1,0 +1,69 @@
+<section>
+	<div class="row">
+		<div class="col-sm-8 col-sm-push-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title"><label>Search: </label>
+						<input ng-model="query" placeholder="Search for an Item" autofocus></input>
+					</div>
+				</div>
+			</div>
+			<label>sort by date:
+				<label>newest first <input type="radio" ng-model="direction" checked>
+				</label>
+				<label> oldest first <input type="radio" ng-model="direction" value="reverse">
+				</label>
+			</label>
+		</div>
+	</div>
+<br>
+<div class="row" id="post-list">
+	<div class="col-sm-8 col-sm-push-2">
+
+
+		<div ng-if="categoryId === '0'">
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+		 			<div class="panel-title"><label>All Posts</label></div>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="post in allPosts | orderBy: '-date': direction | filter: query" >
+						<div>
+							<a href="#/post/{{post.postId}}">
+								<h3>{{post.title}}</h3></a>
+								<h5>Posted by {{post.author}} in "{{getCategoryObject(post.categoryId).name}}" on {{post.date | date:"short"}} </h5>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- if we are only listing 1 category -->
+		<div ng-if="categoryId !== '0'">
+
+			<div class="panel panel-info">
+				<div class="panel-heading">
+		 			<div class="panel-title"><label>{{category.name}}</label></div>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="post in categoryPosts | orderBy: '-date': direction | filter: query" >
+						<div>
+							<a href="#/post/{{post.postId}}">
+								<h3>{{post.title}}</h3></a>
+								<h5>Posted by {{post.author}} on {{post.date | date:"short"}}</h5>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="row">
+		<div class="col-sm-8 col-sm-push-2">
+			<a ng-href='#/postForm'><button class="btn btn-primary">Post New Item</button></a>
+		</div>
+	</div>
+</section>
+
+

@@ -1,0 +1,28 @@
+<section>
+	<div class="row">
+		<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h1 class="panel-title">{{post.title}}</h1>
+				</div>
+
+				<div class="panel-body">
+					<h5>Posted by {{post.author}} in "{{category.name}}" on {{post.date | date:'short'}}</h5>
+					<p>{{post.description}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
+			<a ng-href="#/list"><button class="btn btn-primary">Back to List</button></a>
+			<a ng-href="#/post/{{post.postId}}/edit"><button class="btn btn-primary">Edit this post</button></a>
+			<button ng-really-message="Are you sure you want to delete this post?" ng-really-click=" deletePost()" class="btn btn-primary">Delete this post</button>
+		</div>
+	</div>
+</div>
+
+</section>

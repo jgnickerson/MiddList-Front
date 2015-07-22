@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.sass-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-animate" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-cookies" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-messages" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-mocks" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-route" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-sanitize" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/angular-touch" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/bootstrap-sass-official" />
+      <excludeFolder url="file://$MODULE_DIR$/bower_components/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="lodash-DefinitelyTyped" level="application" />
+  </component>
+</module>
