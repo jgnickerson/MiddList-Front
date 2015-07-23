@@ -2,9 +2,15 @@ angular.module('middlistApp').controller('ListController', ['$scope', '$rootScop
   ($scope, $rootScope, $routeParams, postRepository) ->
     $scope.categoryId = $routeParams.categoryId #needed in scope for ng-if in list.html
     $scope.category = postRepository.getCategoryObject($scope.categoryId);
+    $scope.allPosts = []
 
     if $scope.categoryId is '0'
-      $scope.allPosts = postRepository.getAllPosts()
+      postRepository.getAllPosts().then((result) -> 
+        console.log result
+        $scope.allPosts = result.data
+      , (reason) -> 
+        console.log("getAllPosts error:", reason)
+      )
       $scope.categories = postRepository.getCategories()
     else
       $scope.categoryPosts = postRepository.getCategoryPosts($scope.categoryId)
