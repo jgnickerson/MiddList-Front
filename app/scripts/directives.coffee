@@ -27,8 +27,9 @@ angular.module('middlistApp').directive('categoryNav', ->
                 </div>
     """
     scope: {}
-    controller: ['$scope', 'postRepository', ($scope, postRepository) ->
-      $scope.categories = postRepository.getCategories()
+    controller: ['$scope', '$http', ($scope, $http) ->
+      $scope.categories = []
+      $http.get('http://localhost:3000/cats').success((cats) -> $scope.categories = cats)
     ]
   )
 )

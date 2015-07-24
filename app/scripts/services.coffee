@@ -3,16 +3,16 @@ angular.module('middlistApp').service 'postRepository', ['$http', ($http) ->
 
   service = {}
 
-  categories = [
-    {name: 'Electronics', id: 1}
-    {name: 'Gear', id: 2}
-    {name: 'Books', id: 3}
-  ]
+  categories = []
 
   allPosts = []
 
   service.getAllPosts = ->
-    return $http({method: 'GET', url:'http://localhost:9001/api/data'})
+    posts = []
+    $http.get('http://localhost:3000/posts').success((data) ->
+      console.log data
+      posts = data
+    )
 
   service.getCategoryPosts = (categoryId) ->
     #return array of only those posts which

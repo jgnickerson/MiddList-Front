@@ -1,29 +1,27 @@
-angular.module('middlistApp').controller('ListController', ['$scope', '$rootScope', '$routeParams', 'postRepository'
-  ($scope, $rootScope, $routeParams, postRepository) ->
+angular.module('middlistApp').controller('ListController', ['$scope', '$http', '$routeParams', 'postRepository'
+  ($scope, $http, $routeParams, postRepository) ->
     $scope.categoryId = $routeParams.categoryId #needed in scope for ng-if in list.html
-    $scope.category = postRepository.getCategoryObject($scope.categoryId);
+    $scope.categories = []
     $scope.allPosts = []
+    $scope.category = {}
 
     if $scope.categoryId is '0'
-      postRepository.getAllPosts().then((result) -> 
-        console.log result
-        $scope.allPosts = result.data
-      , (reason) -> 
-        console.log("getAllPosts error:", reason)
-      )
-      $scope.categories = postRepository.getCategories()
+      $http.get('http://localhost:3000/posts').success((data) -> $scope.allPosts = data)
+      $http.get('http://localhost:3000/cats').success((cats) -> $scope.categories = cats)
     else
       $scope.categoryPosts = postRepository.getCategoryPosts($scope.categoryId)
 
     $scope.getCategoryObject = (categoryId) ->
-      return postRepository.getCategoryObject(categoryId)
+      return _.find($scope.categories, (category) -> return category.id is categoryId)
 ])
 
-angular.module('middlistApp').controller('NewPostController', ['$scope', '$location', '$routeParams', 'postRepository'
-  ($scope, $location, $routeParams, postRepository) ->
-    $scope.categories = postRepository.getCategories()
-#    pristinePost = {title:null, category:null, author:null, description:null}
-    pristinePost = {}
+angular.module('middlistApp').controller('NewPostController', ['$scope','$http', '$location', '$routeParams', 'postRepository'
+  ($scope, $http, $location, $routeParams, postRepository) ->
+    pristinePost = {title:null, category:null, author:null, description:null}
+    $scope.categories = []
+    $scope.path = $location.path()
+    $http.get('http://localhost:3000/cats').success((cats) -> $scope.categories = cats)
+
 
     if $location.path() is '/postForm'
       $scope.post = {}
@@ -31,12 +29,11 @@ angular.module('middlistApp').controller('NewPostController', ['$scope', '$locat
       postToBeEdited = postRepository.getPost($routeParams.postId)
       $scope.post = _.clone(postToBeEdited)
 
-    $scope.postIsNew = postRepository.postIsNew($scope.post) #needed in scope for ng-if in postForm.html
 
     $scope.update = (post) ->
       if $scope.postForm.$valid
-        if $scope.postIsNew
-          postRepository.addPost(post)
+        if $scope.path is '/postForm'
+          $http.post('http://localhost:3000/postForm', $scope.post).success( -> $location.path('/list'))
         else
           postRepository.updatePost(post)
         $location.path('/list')
