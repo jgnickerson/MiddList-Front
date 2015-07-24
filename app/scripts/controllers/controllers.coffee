@@ -15,28 +15,28 @@ angular.module('middlistApp').controller('ListController', ['$scope', '$http', '
       return _.find($scope.categories, (category) -> return category.id is categoryId)
 ])
 
+
+
 angular.module('middlistApp').controller('NewPostController', ['$scope','$http', '$location', '$routeParams', 'postRepository'
   ($scope, $http, $location, $routeParams, postRepository) ->
+
     pristinePost = {title:null, category:null, author:null, description:null}
+    postId = $routeParams.postId
     $scope.categories = []
     $scope.path = $location.path()
     $http.get('http://localhost:3000/cats').success((cats) -> $scope.categories = cats)
 
-
     if $location.path() is '/postForm'
       $scope.post = {}
     else
-      postToBeEdited = postRepository.getPost($routeParams.postId)
-      $scope.post = _.clone(postToBeEdited)
-
+      $http.get('http://localhost:3000/post/' + postId).success((post) -> $scope.post = _.clone(post))
 
     $scope.update = (post) ->
       if $scope.postForm.$valid
         if $scope.path is '/postForm'
           $http.post('http://localhost:3000/postForm', $scope.post).success( -> $location.path('/list'))
         else
-          postRepository.updatePost(post)
-        $location.path('/list')
+          $http.put('http://localhost:3000/post/' + postId + '/edit', $scope.post).success( -> $location.path('/list'))
 
     $scope.reset = (form) ->
       if form?
@@ -45,12 +45,22 @@ angular.module('middlistApp').controller('NewPostController', ['$scope','$http',
       $scope.post = angular.copy(pristinePost)
   ])
 
-angular.module('middlistApp').controller('PostViewController', ['$scope', '$routeParams', '$location', 'postRepository'
-  ($scope, $routeParams, $location, postRepository) ->
-    $scope.post = postRepository.getPost($routeParams.postId)
-    $scope.category = postRepository.getCategoryObject($scope.post.categoryId)
+
+
+angular.module('middlistApp').controller('PostViewController', ['$scope', '$http', '$routeParams', '$location', 'postRepository'
+  ($scope, $http, $routeParams, $location, postRepository) ->
+    postId = $routeParams.postId
+    $scope.post = {}
+    $scope.category = {}
+    $http.get('http://localhost:3000/post/' + postId).success((post) ->
+      $scope.post = post
+      $http.get('http://localhost:3000/cat/' + $scope.post.categoryId).success((category) ->
+        $scope.category = category
+      )
+    )
 
     $scope.deletePost = ->
-      postRepository.deletePost($routeParams.postId)
-      $location.path('/list')
+      $http.get('http://localhost:3000/post/'+ postId + '/delete').success( ->
+        $location.path('/list')
+      )
 ])
