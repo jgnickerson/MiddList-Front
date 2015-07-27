@@ -20,7 +20,6 @@
 <div class="row" id="post-list">
 	<div class="col-sm-8 col-sm-push-2">
 
-
 		<div ng-if="categoryId === '0'">
 
 			<div class="panel panel-info">
@@ -28,7 +27,7 @@
 		 			<div class="panel-title"><label>All Posts</label></div>
 				</div>
 				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="post in allPosts | orderBy: '-date': direction | filter: query" >
+					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
 						<div>
 							<a href="#/post/{{post.postId}}">
 								<h3>{{post.title}}</h3></a>
@@ -44,10 +43,10 @@
 
 			<div class="panel panel-info">
 				<div class="panel-heading">
-		 			<div class="panel-title"><label>{{category.name}}</label></div>
+		 			<div class="panel-title"><label>{{getCategoryObject(categoryId).name}}</label></div>
 				</div>
 				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="post in categoryPosts | orderBy: '-date': direction | filter: query" >
+					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
 						<div>
 							<a href="#/post/{{post.postId}}">
 								<h3>{{post.title}}</h3></a>

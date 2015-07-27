@@ -18,11 +18,11 @@ angular.module('middlistApp').service 'postRepository', ['$http', ($http) ->
     #return array of only those posts which
     #have matching categoryId
     categoryId = parseInt(categoryId)
-    return _.filter(allPosts, (p) -> p.categoryId is categoryId)
+    return _.filter(posts, (p) -> p.categoryId is categoryId)
 
   service.getPost = (postId) ->
     postId = parseInt(postId)
-    return _.find(allPosts, (p) -> p.postId is postId)
+    return _.find(posts, (p) -> p.postId is postId)
 
   service.getCategoryObject = (categoryId) ->
     categoryId = parseInt(categoryId)
@@ -36,16 +36,16 @@ angular.module('middlistApp').service 'postRepository', ['$http', ($http) ->
   service.addPost = (newPost) ->
     newPost.postId = currentId++
     newPost.date = new Date()
-    allPosts.push(newPost)
+    posts.push(newPost)
 
   service.updatePost = (editedPost) ->
-    originalPost = _.find(allPosts, (p) -> p.postId is editedPost.postId)
+    originalPost = _.find(posts, (p) -> p.postId is editedPost.postId)
     service.deletePost(originalPost.postId)
-    allPosts.push(editedPost)
+    posts.push(editedPost)
 
   service.deletePost = (postId) ->
     postId = parseInt(postId)
-    _.remove(allPosts, (p) -> p.postId is postId)
+    _.remove(posts, (p) -> p.postId is postId)
 
   service.postIsNew = (post) ->
     return !post.postId?

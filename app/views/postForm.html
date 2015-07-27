@@ -4,6 +4,8 @@
 			<div class="form-group">
 				<form name="postForm" novalidate>
 
+          <error-list></error-list>
+
 					<label> Title: </label>
 						<input class="form-control" type="text" name="title" ng-model="post.title" required="" ng-minlength="5" ng-model-options="{allowInvalid:true}"/>
 					<div class="error-list" ng-if="postForm.title.$dirty || postForm.$submitted" ng-messages="postForm.title.$error">
@@ -41,12 +43,12 @@
 					<div ng-if="path === '/postForm'" class="form-bottom-button">
 						<a ng-href="#/list"><button class="btn btn-primary">Back to List</button></a>
 						<input type="button" class="btn btn-primary" ng-click="reset(postForm)" value="Reset Form" />
-						<input type="submit" class="btn btn-primary" ng-click="update(post)" value="Post" />
+						<input type="submit" class="btn btn-primary" ng-click="update()" value="Post" />
 					</div>
 
 					<div ng-if="path !== '/postForm'" class="form-bottom-button">
 						<a ng-href="#/post/{{post.postId}}"><button class="btn btn-primary">Back to Post</button></a>
-						<input type="submit" class="btn btn-primary" ng-click="update(post)" value="Update Post" />
+						<input type="submit" class="btn btn-primary" ng-click="update()" value="Update Post" />
 					</div>
 				</form>
 			</div>
