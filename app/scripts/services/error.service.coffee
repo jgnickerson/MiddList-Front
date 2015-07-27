@@ -8,11 +8,7 @@ angular.module('middlistApp').service('errorService', ['$window', ($window) ->
     errors.push(err)
 
   service.errors = errors
-
-#  service.displayAlerts = ->
-#    for alert in alerts
-#      $window.alert(alert)
-#      _.remove(alerts, (a) -> alert is a);
+  #gives service calls direct access to errors, rather than returning errors
 
   return service
 
