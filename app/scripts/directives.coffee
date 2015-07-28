@@ -14,7 +14,7 @@ angular.module('middlistApp').directive('categoryNav',['postsService',(postsServ
   return (
     templateUrl: '../views/categoryNav.html'
     scope: {}
-    controller: ['$scope', '$http', ($scope, $http) ->
+    controller: ['$scope', ($scope) ->
       $scope.categories = []
       postsService.getCategories().then((cats) -> $scope.categories = cats)
     ]

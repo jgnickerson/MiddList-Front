@@ -36,10 +36,7 @@ angular.module('middlistApp').controller('NewPostController', ['$scope','$http',
       if $scope.postForm.$valid
 
         if $scope.path is '/postForm'
-          postsService.addNewPost($scope.post).then(
-            ( -> $location.path('/list')),
-            (httpError) -> errorService.addError(httpError)
-          )
+          postsService.addNewPost($scope.post).then( -> $location.path('/list'))
         else
           postsService.updatePost($scope.post).then( -> $location.path('/list'))
 
