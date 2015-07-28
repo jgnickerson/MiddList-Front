@@ -1,16 +1,18 @@
-describe 'Service: errorService', ->
+describe('Service: errorService',( ->
+  errorService = null
 
-  beforeEach module 'middlistApp'
-
-  errorService = {}
-
-  scope = {}
+  beforeEach(module('middlistApp'))
 
   # Initialize the controller and a mock scope
-  beforeEach inject ($service, $rootScope) ->
-    scope = $rootScope.$new()
-    errorService = $service 'errorService', {
+  beforeEach(inject((_errorService_) ->
+    errorService = _errorService_
+  ))
 
-    }
-
-  it 'should attach a list of awesomeThings to the scope', ->
+  it('should give us an array of error messages, containing only "err"',( ->
+    expect(errorService.errors.length).toEqual(0)
+    err = "err"
+    errorService.addError(err)
+    expect(errorService.errors.length).toEqual(1)
+    expect(errorService.errors).toEqual([err])
+  ))
+))

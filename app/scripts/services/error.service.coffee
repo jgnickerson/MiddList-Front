@@ -1,4 +1,4 @@
-angular.module('middlistApp').service('errorService', ['$window', ($window) ->
+angular.module('middlistApp').service('errorService', ->
 
   service = {}
 
@@ -12,4 +12,4 @@ angular.module('middlistApp').service('errorService', ['$window', ($window) ->
 
   return service
 
-])
+)
