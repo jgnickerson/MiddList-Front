@@ -29,3 +29,5 @@ angular.module('middlistApp').directive('errorList', ->
     templateUrl: '../views/errorList.html'
   }
 )
+
+
