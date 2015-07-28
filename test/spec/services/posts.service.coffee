@@ -1,4 +1,4 @@
-xdescribe('Service: postsService',( ->
+xdescribe('Service: postsService', ( ->
   postsService = {}
   httpBackend = {}
   fakeData =
@@ -22,7 +22,7 @@ xdescribe('Service: postsService',( ->
     httpBackend = $httpBackend
   ))
 
-  it('should get an array of post objects',( ->
+  it('should get an array of post objects', ( ->
     httpBackend.whenGET("http://localhost:3000/posts").respond(fakeData)
     postsService.getPosts().then((posts) ->
       expect(posts).toEqual([{

@@ -1,5 +1,4 @@
 angular.module('middlistApp').service('errorService', ->
-
   service = {}
 
   errors = []
@@ -11,5 +10,4 @@ angular.module('middlistApp').service('errorService', ->
   #gives service calls direct access to errors, rather than returning errors
 
   return service
-
 )

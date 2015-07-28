@@ -34,6 +34,7 @@ module.exports = (config) ->
       # endbower
       "app/scripts/**/*.coffee"
       "test/mock/**/*.coffee"
+      "test/helpers/**/*.coffee"
       "test/spec/**/*.coffee"
     ],
 

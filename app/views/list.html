@@ -4,7 +4,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title"><label>Search: </label>
-						<input ng-model="query" placeholder="Search for an Item" autofocus></input>
+						<input ng-model="query" placeholder="Search for an Item" autofocus/>
 					</div>
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
 						<div>
-							<a href="#/post/{{post.postId}}">
+							<a ng-href="#/post/{{post.postId}}">
 								<h3>{{post.title}}</h3></a>
 								<h5>Posted by {{post.author}} in "{{getCategoryObject(post.categoryId).name}}" on {{post.date | date:"short"}} </h5>
 						</div>
@@ -48,7 +48,7 @@
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
 						<div>
-							<a href="#/post/{{post.postId}}">
+							<a ng-href="#/post/{{post.postId}}">
 								<h3>{{post.title}}</h3></a>
 								<h5>Posted by {{post.author}} on {{post.date | date:"short"}}</h5>
 						</div>

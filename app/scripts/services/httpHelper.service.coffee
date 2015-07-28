@@ -1,24 +1,22 @@
-angular.module('middlistApp').service('httpHelper', ['$http', 'errorService',  ($http, errorService) ->
-
+angular.module('middlistApp').service('httpHelper', ['$http', 'errorService', ($http, errorService) ->
   service = {}
 
-  transformResponse = (response) -> response?.data
+  service.transformResponse = (response) -> response?.data
 
-  handleError = (reason) ->
-    errorService.addError(reason.data)
-    throw reason.status + " : " + reason.data
+  service.handleError = (reason) ->
+    errorService.addError(reason?.data)
 
   service.get = (url) ->
-    $http.get(url).then(transformResponse,handleError)
+    $http.get(url).then(this.transformResponse, this.handleError)
 
-  service.post = (url,item) ->
-    $http.post(url,item).then(transformResponse,handleError)
+  service.post = (url, item) ->
+    $http.post(url, item).then(this.transformResponse, this.handleError)
 
-  service.put = (url,item) ->
-    $http.put(url,item).then(transformResponse,handleError)
+  service.put = (url, item) ->
+    $http.put(url, item).then(this.transformResponse, this.handleError)
 
   service.delete = (url) ->
-    $http.delete(url).then(transformResponse,handleError)
+    $http.delete(url).then(this.transformResponse, this.handleError)
 
   return service
 ])

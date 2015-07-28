@@ -6,6 +6,19 @@ describe('Controller: ListController', ->
 
   beforeEach(module('middlistApp'))
 
+  injectNewController = (param) ->
+    inject((_$controller_, $rootScope, _$routeParams_, _postsService_) ->
+      scope = $rootScope.$new()
+      $routeParams = _$routeParams_
+      postsService = _postsService_
+      $controller = _$controller_('ListController',
+        $scope: scope,
+        $routeParams: {categoryId: param}
+        postsService: postsService
+      )
+      scope.$apply()
+    )
+
   beforeEach(() ->
     mockPostsService = {}
     module('middlistApp', ($provide) ->
@@ -22,25 +35,25 @@ describe('Controller: ListController', ->
       ]
       mockPostsService.posts = [
         {
-          author:'A'
-          title:'A'
-          description:'A'
-          postId:1
-          categoryId:1
+          author: 'A'
+          title: 'A'
+          description: 'A'
+          postId: 1
+          categoryId: 1
         },
         {
-          author:'B'
-          title:'B'
-          description:'B'
-          postId:2
-          categoryId:2
+          author: 'B'
+          title: 'B'
+          description: 'B'
+          postId: 2
+          categoryId: 2
         },
         {
-          author:'C'
-          title:'C'
-          description:'C'
-          postId:3
-          categoryId:3
+          author: 'C'
+          title: 'C'
+          description: 'C'
+          postId: 3
+          categoryId: 3
         }
       ]
 
@@ -61,18 +74,7 @@ describe('Controller: ListController', ->
         defer.resolve(categoryPosts)
         return defer.promise
     )
-
-    inject((_$controller_, $rootScope, _$routeParams_, _postsService_) ->
-      scope = $rootScope.$new()
-      $routeParams = _$routeParams_
-      postsService = _postsService_
-      $controller = _$controller_('ListController',
-        $scope: scope,
-        $routeParams: {categoryId:'0'}
-        postsService: postsService
-      )
-      scope.$apply()
-    )
+    injectNewController('0')
   )
 
   it('should contain all categories in scope on startup', ->
@@ -83,38 +85,26 @@ describe('Controller: ListController', ->
     ])
   )
 
-  describe('with a $routeParams.categoryId of "0"', ->
-
-    beforeEach( ->
-      spyOn(scope,'getCategoryObject')
+  describe('getCategoryObject()', ->
+    it('should grab the category.name for each post when given an number', ->
+      expect(scope.getCategoryObject(1)).toEqual(postsService.categories[0])
     )
 
+    it('should grab the category.name for each post when given a number as a string', ->
+      expect(scope.getCategoryObject('1')).toEqual(postsService.categories[0])
+    )
+  )
+
+  describe('with a $routeParams.categoryId of "0"', ->
     it('should grab all posts contained in the service, dumping them to scope.posts', ->
       expect(scope.posts.length).toEqual(postsService.posts.length)
       expect(scope.posts).toEqual(postsService.posts)
     )
-
-    it('should grab the category.name for each post', ->
-      scope.getCategoryObject(1)
-      expect(scope.getCategoryObject).toHaveBeenCalled()
-    )
   )
 
   describe('with a $routeParams.categoryId of "1"', ->
-
     beforeEach(
-      #reinjecting to change routeparams to 1 to test other state of controller
-      inject((_$controller_, $rootScope, _$routeParams_, _postsService_) ->
-        scope = $rootScope.$new()
-        $routeParams = _$routeParams_
-        postsService = _postsService_
-        $controller = _$controller_('ListController',
-          $scope: scope,
-          $routeParams: {categoryId:'1'}
-          postsService: postsService
-        )
-        scope.$apply()
-      )
+      injectNewController('1')
     )
 
     it('should only grab posts belonging to categoryId "1"', ->
