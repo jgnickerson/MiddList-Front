@@ -5,7 +5,6 @@ angular.module('middlistApp').directive('postInformation', ['postsService', '$lo
   link: (scope) ->
     scope.category = {}
     postsService.getCategory(scope.post.categoryId).then((cat) -> scope.category = cat)
-#    scope.category = postsService.getCategory(scope.post.categoryId)
 
     scope.deletePost = (postId) ->
       postsService.deletePost(postId)
