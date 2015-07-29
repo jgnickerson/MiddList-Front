@@ -30,4 +30,18 @@ angular.module('middlistApp').directive('errorList', ->
   }
 )
 
-
+angular.module('middlistApp').directive('postInformation', ['postsService', (postsService) ->
+  return {
+    scope: {
+      post: '='
+    }
+    link: (scope) ->
+      scope.category = null
+      postsService.getCategory(scope.post.categoryId).then((cat)-> scope.category = cat)
+#    controller: ['$scope', 'postsService', ($scope, postsService) ->
+#      $scope.category = {}
+#      postsService.getCategory($scope.post.categoryId).then((cat)->$scope.category = cat)
+#    ]
+    templateUrl: '../views/postInformation.html'
+  }
+])

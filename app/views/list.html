@@ -28,11 +28,7 @@
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
-						<div>
-							<a ng-href="#/post/{{post.postId}}">
-								<h3>{{post.title}}</h3></a>
-								<h5>Posted by {{post.author}} in "{{getCategoryObject(post.categoryId).name}}" on {{post.date | date:"short"}} </h5>
-						</div>
+            <post-information post="post"></post-information>
 					</li>
 				</ul>
 			</div>
@@ -47,11 +43,7 @@
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
-						<div>
-							<a ng-href="#/post/{{post.postId}}">
-								<h3>{{post.title}}</h3></a>
-								<h5>Posted by {{post.author}} on {{post.date | date:"short"}}</h5>
-						</div>
+            <post-information post="post"></post-information>
 					</li>
 				</ul>
 			</div>

@@ -85,15 +85,18 @@ describe('Controller: ListController', ->
     ])
   )
 
-  describe('getCategoryObject()', ->
-    it('should grab the category.name for each post when given an number', ->
-      expect(scope.getCategoryObject(1)).toEqual(postsService.categories[0])
-    )
+#  refactored the below into a directive
 
-    it('should grab the category.name for each post when given a number as a string', ->
-      expect(scope.getCategoryObject('1')).toEqual(postsService.categories[0])
-    )
-  )
+#  describe('getCategoryObject()', ->
+#    it('should grab the category.name for each post when given an number', ->
+#      expect(scope.getCategoryObject(1)).toEqual(postsService.categories[0])
+#    )
+#
+#
+#    it('should grab the category.name for each post when given a number as a string', ->
+#      expect(scope.getCategoryObject('1')).toEqual(postsService.categories[0])
+#    )
+#  )
 
   describe('with a $routeParams.categoryId of "0"', ->
     it('should grab all posts contained in the service, dumping them to scope.posts', ->
