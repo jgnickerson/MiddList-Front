@@ -33,9 +33,9 @@ module.exports = (config) ->
       # bower:coffee
       # endbower
       "app/scripts/**/*.coffee"
-      "test/mock/**/*.coffee"
       "test/helpers/**/*.coffee"
       "test/spec/**/*.coffee"
+      ".tmp/scripts/**/*.js"
     ],
 
     # list of files / patterns to exclude
@@ -66,6 +66,7 @@ module.exports = (config) ->
       "karma-phantomjs-launcher",
       "karma-jasmine",
       "karma-coffee-preprocessor"
+      "karma-coverage"
     ]
 
     # enable / disable watching file and executing tests whenever any file changes
@@ -77,7 +78,18 @@ module.exports = (config) ->
 
     colors: true
 
-    preprocessors: '**/*.coffee': ['coffee']
+    reporters: ['progress', 'coverage']
+
+    logLevel: config.LOG_DEBUG
+
+    preprocessors:
+      '**/*.coffee': ['coffee']
+      '.tmp/scripts/**/*.js': ['coverage']
+
+    coverageReporter:
+      type: 'html'
+      dir: 'test/reports'
+
 
     # Uncomment the following lines if you are using grunt's server to run the tests
     # proxies: '/': 'http://localhost:9000/'

@@ -34,12 +34,11 @@
 			</div>
 		</div>
 
-		<!-- if we are only listing 1 category -->
 		<div ng-if="categoryId !== '0'">
 
 			<div class="panel panel-info">
 				<div class="panel-heading">
-		 			<div class="panel-title"><label>{{getCategoryObject(categoryId).name}}</label></div>
+		 			<div class="panel-title"><label>{{postsService.getCategory(categoryId).name}}</label></div>
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >

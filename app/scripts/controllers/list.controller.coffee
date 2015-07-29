@@ -10,9 +10,4 @@ angular.module('middlistApp').controller('ListController', ['$scope', '$routePar
       postsService.getPosts().then((posts) -> $scope.posts = posts)
     else
       postsService.getCategoryPosts($scope.categoryId).then((posts)-> $scope.posts = posts)
-
-#    #refactor this into postsService
-#    $scope.getCategoryObject = (categoryId) ->
-#      categoryId = parseInt(categoryId)
-#      _.find($scope.categories, (category) -> return category.id is categoryId)
 ])

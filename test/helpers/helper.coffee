@@ -29,6 +29,13 @@ createMockPostsService = ($q, mps = {}) ->
     }
   ]
 
+  mps.posts = posts
+
+  mps.getPosts = ->
+    defer = $q.defer()
+    defer.resolve(posts)
+    return defer.promise
+
   mps.getPost = (postId) ->
     defer = $q.defer()
     defer.resolve(posts[0])

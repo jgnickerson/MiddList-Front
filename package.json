@@ -30,6 +30,7 @@
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
     "karma-coffee-preprocessor": "*",
+    "karma-coverage": "^0.4.2",
     "karma-jasmine": "*",
     "karma-phantomjs-launcher": "*",
     "time-grunt": "^1.0.0"

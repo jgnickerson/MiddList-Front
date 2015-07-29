@@ -5,8 +5,8 @@ describe('Controller: NewPostController', ->
   $location = null
   postsService = null
 
-  injectNewController = ((path)->
-    return inject((_$controller_, $rootScope, _$routeParams_, _$location_, _postsService_) ->
+  injectNewController = (path)->
+    inject((_$controller_, $rootScope, _$routeParams_, _$location_, _postsService_) ->
       scope = $rootScope.$new()
       $routeParams = _$routeParams_
       $location = _$location_
@@ -18,7 +18,7 @@ describe('Controller: NewPostController', ->
       )
       scope.$apply()
     )
-  )
+
 
   beforeEach(module('middlistApp'))
 
@@ -82,7 +82,6 @@ describe('Controller: NewPostController', ->
       expect(scope.post).toEqual({title: null, category: null, author: null, description: null})
     )
   )
-
 
 
   describe('when path is NOT "/postForm" (i.e. we are updating an existing post)', ->

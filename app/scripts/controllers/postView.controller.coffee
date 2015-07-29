@@ -9,6 +9,6 @@ angular.module('middlistApp').controller('PostViewController', ['$scope', '$http
       postsService.getCategory($scope.post.categoryId).then((category) -> $scope.category = category)
     )
 
-    $scope.deletePost = ->
+    $scope.deletePost = () ->
       postsService.deletePost(postId).then(-> $location.path('/list'))
 ])
