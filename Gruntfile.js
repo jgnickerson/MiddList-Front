@@ -45,6 +45,10 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:test', 'karma']
       },
+      jade: {
+        files: '<%= yeoman.app %>/**/*.jade',
+        tasks: ['jade']
+      },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer:server']
@@ -223,6 +227,21 @@ module.exports = function (grunt) {
           dest: '.tmp/spec',
           ext: '.js'
         }]
+      }
+    },
+
+    jade: {
+      compile: {
+        expand: true,
+        flatten: false,
+        cwd: '<%= yeoman.app %>',
+        src: '**/*.jade',
+        ext: '.html',
+        dest: '.tmp/'
+      },
+      options: {
+        client: false,
+        pretty: true
       }
     },
 
@@ -473,6 +492,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'jade',
       'autoprefixer:server',
       'connect:livereload',
       'watch'

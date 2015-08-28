@@ -1,0 +1,39 @@
+.panel.panel-info
+    .panel-heading
+        .panel-title
+            label Search:
+            input(ng-model='query', placeholder='Search for an Item', autofocus='')
+.row
+    .col-sm-8
+        label
+            | Sort by date:
+            label
+                | Newest first
+                input(type='radio', ng-model='direction', checked='')
+            label
+                | Oldest first
+                input(type='radio', ng-model='direction', value='reverse')
+category-nav
+section
+    #post-list.row
+        .col-sm-8.col-sm-push-2
+            div(ng-if="categoryId === '0'")
+                .panel.panel-info
+                    .panel-heading
+                        .panel-title
+                            label All Posts
+                    ul.list-group
+                        li.list-group-item(ng-repeat="post in posts | orderBy: '-date': direction | filter: query")
+                            post-information(post='post')
+            div(ng-if="categoryId !== '0'")
+                .panel.panel-info
+                    .panel-heading
+                        .panel-title
+                            label {{postsService.getCategory(categoryId).name}}
+                    ul.list-group
+                        li.list-group-item(ng-repeat="post in posts | orderBy: '-date': direction | filter: query")
+                            post-information(post='post')
+    .row
+        .col-sm-8.col-sm-push-2
+            a(ng-href='#/postForm')
+                button.btn.btn-primary Post New Item
