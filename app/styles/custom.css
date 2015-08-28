@@ -1,3 +1,26 @@
+#header {
+  width: 100%;
+  margin: 0px 0px 20px;
+  padding: 5px;
+  color: white;
+  background-color: #337ab7;
+  border: 1px solid #2e6da4;
+}
+
+#header > h1 {
+  font-size: 48px;
+  letter-spacing: 3px;
+}
+
+#header > p {
+  font-style: italic;
+}
+
+#R {
+  font-size: 14px;
+  vertical-align: top;
+}
+
 .panel {
 	margin-bottom: 1px;
 }

@@ -1,59 +1,64 @@
-<section>
-	<div class="row">
-		<div class="col-sm-8 col-sm-push-2">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<div class="panel-title"><label>Search: </label>
-						<input ng-model="query" placeholder="Search for an Item" autofocus/>
-					</div>
-				</div>
-			</div>
-			<label>sort by date:
-				<label>newest first <input type="radio" ng-model="direction" checked>
-				</label>
-				<label> oldest first <input type="radio" ng-model="direction" value="reverse">
-				</label>
-			</label>
-		</div>
-	</div>
-<br>
-<div class="row" id="post-list">
-	<div class="col-sm-8 col-sm-push-2">
-
-		<div ng-if="categoryId === '0'">
-
-			<div class="panel panel-info">
-				<div class="panel-heading">
-		 			<div class="panel-title"><label>All Posts</label></div>
-				</div>
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
-            <post-information post="post"></post-information>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div ng-if="categoryId !== '0'">
-
-			<div class="panel panel-info">
-				<div class="panel-heading">
-		 			<div class="panel-title"><label>{{postsService.getCategory(categoryId).name}}</label></div>
-				</div>
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="post in posts | orderBy: '-date': direction | filter: query" >
-            <post-information post="post"></post-information>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title"><label>Search: </label>
+            <input ng-model="query" placeholder="Search for an Item" autofocus/>
+        </div>
+    </div>
 </div>
-	<div class="row">
-		<div class="col-sm-8 col-sm-push-2">
-			<a ng-href='#/postForm'><button class="btn btn-primary">Post New Item</button></a>
-		</div>
-	</div>
+<div class="row">
+    <div class="col-sm-8">
+        <label>Sort by date:
+            <label>Newest first <input type="radio" ng-model="direction" checked>
+            </label>
+            <label> Oldest first <input type="radio" ng-model="direction" value="reverse">
+            </label>
+        </label>
+    </div>
+</div>
+
+    <category-nav></category-nav>
+    <section>
+    <div class="row" id="post-list">
+        <div class="col-sm-8 col-sm-push-2">
+
+            <div ng-if="categoryId === '0'">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><label>All Posts</label></div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            ng-repeat="post in posts | orderBy: '-date': direction | filter: query">
+                            <post-information post="post"></post-information>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div ng-if="categoryId !== '0'">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><label>{{postsService.getCategory(categoryId).name}}</label></div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            ng-repeat="post in posts | orderBy: '-date': direction | filter: query">
+                            <post-information post="post"></post-information>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 col-sm-push-2">
+            <a ng-href='#/postForm'>
+                <button class="btn btn-primary">Post New Item</button>
+            </a>
+        </div>
+    </div>
 </section>
 
 
