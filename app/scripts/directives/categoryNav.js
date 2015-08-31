@@ -17,6 +17,7 @@
             };
           } else {
             return postsService.getCategory(categoryId).then(function(cat) {
+                console.log("Current category: " + cat.name);
               return scope.currentCat = cat;
             });
           }

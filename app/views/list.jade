@@ -19,7 +19,7 @@ section
         .col-sm-8.col-sm-push-2
             div(ng-if="categoryId === '0'")
                 .panel.panel-info
-                    .panel-heading
+                    //.panel-heading
                         .panel-title
                             label All Posts
                     ul.list-group
@@ -27,7 +27,7 @@ section
                             post-information(post='post')
             div(ng-if="categoryId !== '0'")
                 .panel.panel-info
-                    .panel-heading
+                    //.panel-heading
                         .panel-title
                             label {{postsService.getCategory(categoryId).name}}
                     ul.list-group

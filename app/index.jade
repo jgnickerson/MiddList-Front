@@ -25,10 +25,12 @@ html
         // Add your site or application content here
         .container-fluid
             #header.row
-                h1
-                    | MiddList
-                    span#R ®
-                p Get what you need, sell what you don't.
+                #title
+                    h1
+                        | MiddList
+                        span#R ®
+                    p Get what you need, sell what you don't.
+                img(src='views/images/leopard.png' width='100px' height='100px')
         .container
             div(ng-view='')
         // Google Analytics: change UA-XXXXX-X to be your site's ID
