@@ -33,6 +33,6 @@ section
                         input.btn.btn-primary(type='button', ng-click='reset(postForm)', value='Reset Form')
                         input.btn.btn-primary(type='submit', ng-click='update()', value='Post')
                     .form-bottom-button(ng-if="path !== '/postForm'")
-                        a(ng-href='#/post/{{post.postId}}')
+                        a(ng-href='#/post/{{post.id}}')
                             button.btn.btn-primary Back to Post
                         input.btn.btn-primary(type='submit', ng-click='update()', value='Update Post')

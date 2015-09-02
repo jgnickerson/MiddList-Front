@@ -7,16 +7,16 @@
         return httpHelper.get('http://localhost:3000/posts');
       };
       service.getPost = function(postId) {
-        return httpHelper.get("http://localhost:3000/post/" + postId);
+        return httpHelper.get("http://localhost:3000/posts/" + postId);
       };
       service.getCategoryPosts = function(categoryId) {
-        return httpHelper.get("http://localhost:3000/posts/" + categoryId);
+        return httpHelper.get("http://localhost:3000/category/" + categoryId);
       };
       service.getCategories = function() {
-        return httpHelper.get('http://localhost:3000/cats');
+        return httpHelper.get('http://localhost:3000/categories');
       };
       service.getCategory = function(categoryId) {
-        return httpHelper.get("http://localhost:3000/cat/" + categoryId);
+        return httpHelper.get("http://localhost:3000/categories/" + categoryId);
       };
       service.addNewPost = function(newPost) {
         return httpHelper.post('http://localhost:3000/posts', newPost);
@@ -25,7 +25,7 @@
         return httpHelper.put("http://localhost:3000/posts/" + updatedPost.postId, updatedPost);
       };
       service.deletePost = function(postId) {
-        return httpHelper["delete"]("http://localhost:3000/posts/view/" + postId);
+        return httpHelper.delete("http://localhost:3000/posts/" + postId);
       };
       return service;
     }

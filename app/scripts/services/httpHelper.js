@@ -18,8 +18,8 @@
       service.put = function(url, item) {
         return $http.put(url, item).then(this.transformResponse, this.handleError);
       };
-      service["delete"] = function(url) {
-        return $http["delete"](url).then(this.transformResponse, this.handleError);
+      service.delete = function(url) {
+        return $http.delete(url).then(this.transformResponse, this.handleError);
       };
       return service;
     }

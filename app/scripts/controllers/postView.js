@@ -7,7 +7,6 @@
       $scope.category = {};
       postsService.getPost(postId).then(function(post) {
         $scope.post = post;
-        console.log(post);
         return postsService.getCategory($scope.post.categoryId).then(function(category) {
           return $scope.category = category;
         });
