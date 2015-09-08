@@ -17,7 +17,7 @@ category-nav
 section
     #post-list.row
         .col-sm-8.col-sm-push-2
-            div(ng-if="categoryId === '0'")
+            div(ng-if="categoryId === 'all'")
                 .panel.panel-info
                     //.panel-heading
                         .panel-title
@@ -25,7 +25,7 @@ section
                     ul.list-group
                         li.list-group-item(ng-repeat="post in posts | orderBy: '-date': direction | filter: query")
                             post-information(post='post')
-            div(ng-if="categoryId !== '0'")
+            div(ng-if="categoryId !== 'all'")
                 .panel.panel-info
                     //.panel-heading
                         .panel-title

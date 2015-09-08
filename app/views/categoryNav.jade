@@ -1,11 +1,11 @@
 .col-xs-8.col-xs-push-2.btn-group
-    button.btn.btn-primary.btn-lg(type='button') {{currentCat.name}}
+    button.btn.btn-primary.btn-lg(type='button') {{currentCat.title}}
     button#main-dropdown-toggle.btn.btn-primary.btn-lg.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
         span.glyphicon.glyphicon-triangle-bottom
         span.sr-only Toggle Dropdown
     ul.dropdown-menu
         li.dropdown-header
         li
-            a(ng-href='#/list') All Posts
+            a(ng-href='#/list/all') All Posts
         li(ng-repeat='cat in categories')
-            a(ng-href='#/list/{{cat.id}}') {{cat.name}}
+            a(ng-href='#/list/{{cat.title}}') {{cat.title}}
