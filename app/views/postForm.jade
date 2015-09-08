@@ -10,8 +10,8 @@ section
                         div(ng-message='required') Tell us what you're posting.
                         div(ng-message='minlength') Title must be at least 5 characters.
                     label Choose a Category:
-                    select.error-list(ng-options='category.id as category.name for category in categories', ng-model='post.categoryId', name='category', required='')
-                        option(value='') --select--
+                    select.error-list(ng-options='category.title as category.title for category in categories', ng-model='post.category', name='category', required='')
+                        option(value='') --category--
                     .error-list(ng-if='postForm.category.$dirty || postForm.$submitted', ng-messages='postForm.category.$error')
                         div(ng-message='required') Which category does this item belong to?
                     br(ng-show='!postForm.$submitted')

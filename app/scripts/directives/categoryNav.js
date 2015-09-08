@@ -11,15 +11,14 @@
           });
           scope.currentCat = {};
           category = $routeParams.category;
-            console.log(category);
           if (category === 'all') {
             return scope.currentCat = {
               title: 'All Posts'
             };
           } else {
             return postsService.getCategory(category).then(function(cat) {
-                console.log("Current category: " + cat.title);
-              return scope.currentCat = cat;
+                //console.log("Current category: " + cat.title);
+                return scope.currentCat = cat;
             });
           }
         },

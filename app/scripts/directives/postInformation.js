@@ -7,10 +7,11 @@
         },
         link: function(scope) {
           scope.category = {};
-          postsService.getCategory(scope.post.categoryId).then(function(cat) {
+          postsService.getCategory(scope.post.category).then(function(cat) {
             return scope.category = cat;
           });
           return scope.deletePost = function(postId) {
+              console.log("Deleting post #" + postId);
             return postsService.deletePost(postId).then(function() {
               return $location.path('/list');
             });
