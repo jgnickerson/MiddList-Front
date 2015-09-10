@@ -2,6 +2,6 @@ div
     a(ng-href='#/post/{{post._id}}')
         h3 {{post.title}}
     h5 Posted by {{post.author}} in {{category.title}} on {{post.date | date:"short"}}
-    button.btn.btn-default(ng-really-message='Are you sure you want to delete this post?', ng-really-click='deletePost({{post._id}})') Delete this post
+    button.btn.btn-default(ng-really-message='Are you sure you want to delete this post?', ng-really-click='deletePost(post._id)') Delete this post
     a(ng-href='#/post/{{post._id}}/edit')
         button.btn.btn-default Edit this post

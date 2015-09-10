@@ -3,7 +3,7 @@
     'postsService', '$location', function(postsService, $location) {
       return {
         scope: {
-          post: '='
+          post: '=' 
         },
         link: function(scope) {
           scope.category = {};
@@ -11,7 +11,6 @@
             return scope.category = cat;
           });
           return scope.deletePost = function(postId) {
-              console.log("Deleting post #" + postId);
             return postsService.deletePost(postId).then(function() {
               return $location.path('/list');
             });
