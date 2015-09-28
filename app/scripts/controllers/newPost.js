@@ -31,7 +31,7 @@
               return $location.path('/list');
             });
           } else {
-            return postsService.updatePost($scope.post).then(function() {
+            return postsService.updatePost($routeParams.postId, $scope.post).then(function() {
               return $location.path('/list');
             });
           }

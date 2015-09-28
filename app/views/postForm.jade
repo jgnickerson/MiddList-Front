@@ -4,17 +4,20 @@ section
             .form-group
                 form(name='postForm', novalidate='')
                     error-list
-                    label  Title:
-                    input.form-control(type='text', name='title', ng-model='post.title', required='', ng-minlength='5', ng-model-options='{allowInvalid:true}')
-                    .error-list(ng-if='postForm.title.$dirty || postForm.$submitted', ng-messages='postForm.title.$error')
-                        div(ng-message='required') Tell us what you're posting.
-                        div(ng-message='minlength') Title must be at least 5 characters.
                     label Choose a Category:
                     select.error-list(ng-options='category.title as category.title for category in categories', ng-model='post.category', name='category', required='')
                         option(value='') --category--
                     .error-list(ng-if='postForm.category.$dirty || postForm.$submitted', ng-messages='postForm.category.$error')
                         div(ng-message='required') Which category does this item belong to?
                     br(ng-show='!postForm.$submitted')
+                    //- var cat = document.getElementByName('category').value;
+                    ///if cat == "string:Books"
+                    input.form-control(type='text',ng-if="document.getElementsByName('category')[0].value === 'string:Books'" , name='isbn', placeholder="isbn")
+                    label  Title:
+                    input.form-control(type='text', name='title', ng-model='post.title', required='', ng-minlength='5', ng-model-options='{allowInvalid:true}')
+                    .error-list(ng-if='postForm.title.$dirty || postForm.$submitted', ng-messages='postForm.title.$error')
+                        div(ng-message='required') Tell us what you're posting.
+                        div(ng-message='minlength') Title must be at least 5 characters.
                     label Author:
                     input.form-control(type='text', ng-model='post.author', name='author', required='', ng-minlength='2', ng-model-options='{allowInvalid:true}')
                     .error-list(ng-if='postForm.author.$dirty || postForm.$submitted', ng-messages='postForm.author.$error')

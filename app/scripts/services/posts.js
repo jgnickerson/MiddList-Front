@@ -21,8 +21,8 @@
       service.addNewPost = function(newPost) {
         return httpHelper.post('http://localhost:3000/posts', newPost);
       };
-      service.updatePost = function(updatedPost) {
-        return httpHelper.put("http://localhost:3000/posts/" + updatedPost.postId, updatedPost);
+      service.updatePost = function(postId, updatedPost) {
+        return httpHelper.put("http://localhost:3000/posts/" + postId, updatedPost);
       };
       service.deletePost = function(postId) {
         return httpHelper.delete("http://localhost:3000/posts/" + postId);
