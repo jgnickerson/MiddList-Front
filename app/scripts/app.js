@@ -2,7 +2,7 @@
   angular.module('middlistApp', ['ngAnimate', 'ngCookies', 'ngMessages', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ngMessages']);
 
   angular.module('middlistApp').config(function($routeProvider) {
-    return $routeProvider.when('/list/:categoryId', {
+    return $routeProvider.when('/list/:category', {
       templateUrl: 'views/list.html',
       controller: 'ListController'
     }).when('/postForm', {
@@ -15,7 +15,7 @@
       templateUrl: 'views/postForm.html',
       controller: 'NewPostController'
     }).otherwise({
-      redirectTo: '/list/0'
+      redirectTo: '/list/all'
     });
   });
 

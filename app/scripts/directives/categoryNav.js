@@ -4,21 +4,21 @@
       return {
         scope: {},
         link: function(scope) {
-          var categoryId;
+          var category;
           scope.categories = [];
           postsService.getCategories().then(function(cats) {
             return scope.categories = cats;
           });
           scope.currentCat = {};
-          categoryId = $routeParams.categoryId;
-          if (categoryId === '0') {
+          category = $routeParams.category;
+          if (category === 'all') {
             return scope.currentCat = {
-              name: 'All Posts'
+              title: 'All Posts'
             };
           } else {
-            return postsService.getCategory(categoryId).then(function(cat) {
-                console.log("Current category: " + cat.name);
-              return scope.currentCat = cat;
+            return postsService.getCategory(category).then(function(cat) {
+                //console.log("Current category: " + cat.title);
+                return scope.currentCat = cat;
             });
           }
         },
